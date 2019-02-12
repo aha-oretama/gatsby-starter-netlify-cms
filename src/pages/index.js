@@ -5,15 +5,15 @@ import Layout from '../components/Layout'
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const {data} = this.props;
+    const {edges: posts} = data.allMarkdownRemark;
 
     return (
       <Layout>
         <section className="section">
           <div className="container">
             <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
+              <h1 className="has-text-weight-bold is-size-2">Blogs</h1>
             </div>
             {posts
               .map(({ node: post }) => (
@@ -30,7 +30,7 @@ export default class IndexPage extends React.Component {
                     <small>{post.frontmatter.date}</small>
                   </p>
                   <p>
-                    {post.excerpt}
+                    {post.frontmatter.description}
                     <br />
                     <br />
                     <Link className="button is-small" to={post.fields.slug}>
@@ -52,7 +52,7 @@ IndexPage.propTypes = {
       edges: PropTypes.array,
     }),
   }),
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -69,6 +69,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            description
             templateKey
             date(formatString: "MMMM DD, YYYY")
           }
@@ -76,4 +77,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
