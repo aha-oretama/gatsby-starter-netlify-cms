@@ -32,7 +32,7 @@ const TemplateWrapper = ({children}) => (
           <meta name="msapplication-TileColor" content="#da532c"/>
           <meta name="theme-color" content="#ffffff"/>
 
-          <meta property="og:type" content="business.business"/>
+          <meta property="og:type" content="article"/>
           <meta property="og:title" content={data.site.siteMetadata.title}/>
           <meta property="og:description" content={data.site.siteMetadata.description}/>
           <meta property="og:url" content="https://aha-oretama.work/"/>
