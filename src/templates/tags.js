@@ -1,34 +1,50 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
+import {graphql, Link} from 'gatsby'
 import Layout from '../components/Layout'
 
 class TagRoute extends React.Component {
   render() {
-    const posts = this.props.data.allMarkdownRemark.edges
-    const postLinks = posts.map(post => (
-      <li key={post.node.fields.slug}>
-        <Link to={post.node.fields.slug}>
-          <h2 className="is-size-2">{post.node.frontmatter.title}</h2>
-        </Link>
-      </li>
-    ))
-    const tag = this.props.pageContext.tag
-    const title = this.props.data.site.siteMetadata.title
-    const totalCount = this.props.data.allMarkdownRemark.totalCount
+    const posts = this.props.data.allMarkdownRemark.edges;
+    const postLinks = posts.map(({node: post}) => (
+      <div
+        className="content"
+        style={{border: '1px solid #333', padding: '2em 4em'}}
+        key={post.id}
+      >
+        <p>
+          <Link className="has-text-primary" to={post.fields.slug}>
+            {post.frontmatter.title}
+          </Link>
+          <span> &bull; </span>
+          <small>{post.frontmatter.date}</small>
+        </p>
+        <p>
+          {post.frontmatter.description}
+          <br/>
+          <br/>
+          <Link className="button is-small" to={post.fields.slug}>
+            Keep Reading →
+          </Link>
+        </p>
+      </div>
+    ));
+    const tag = this.props.pageContext.tag;
+    const title = this.props.data.site.siteMetadata.title;
+    const totalCount = this.props.data.allMarkdownRemark.totalCount;
     const tagHeader = `${totalCount} post${
       totalCount === 1 ? '' : 's'
-    } tagged with “${tag}”`
+      } tagged with “${tag}”`;
 
     return (
       <Layout>
         <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
+          <Helmet title={`${tag} | ${title}`}/>
           <div className="container content">
             <div className="columns">
               <div
                 className="column is-10 is-offset-1"
-                style={{ marginBottom: '6rem' }}
+                style={{marginBottom: '6rem'}}
               >
                 <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
                 <ul className="taglist">{postLinks}</ul>
@@ -61,14 +77,19 @@ export const tagPageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 400)
+          id
           fields {
             slug
           }
           frontmatter {
             title
+            description
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }
     }
   }
-`
+`;
