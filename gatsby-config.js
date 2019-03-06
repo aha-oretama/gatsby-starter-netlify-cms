@@ -54,6 +54,16 @@ module.exports = {
             options: {
               destinationDir: 'static',
             }
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: true,
+            }
           }
         ],
       },
