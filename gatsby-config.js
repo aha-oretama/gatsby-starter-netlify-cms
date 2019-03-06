@@ -64,6 +64,9 @@ module.exports = {
               showLineNumbers: false,
               noInlineHighlight: true,
             }
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`
           }
         ],
       },
