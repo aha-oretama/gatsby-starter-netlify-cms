@@ -32,7 +32,7 @@ tags:
 class RxImmediateSchedulerRule : TestRule {
   private val immediate = object : Scheduler() {
     override fun scheduleDirect(run: Runnable, delay: Long, unit: TimeUnit): Disposable {
-      return super.scheduleDirect(run, 0, unit)
+      return super.scheduleDirect(run,0, unit)
     }
 
     override fun createWorker(): Scheduler.Worker {
