@@ -5,7 +5,7 @@
   "author": "Austin Green",
   "dependencies": {
     "bulma": "^0.8.0",
-    "gatsby": "^2.18.13",
+    "gatsby": "^2.18.15",
     "gatsby-image": "^2.2.37",
     "gatsby-plugin-netlify": "^2.1.30",
     "gatsby-plugin-netlify-cms": "^4.1.33",
@@ -19,7 +19,7 @@
     "gatsby-remark-prismjs": "^3.3.27",
     "gatsby-remark-relative-images": "^0.2.3",
     "gatsby-source-filesystem": "^2.1.42",
-    "gatsby-transformer-remark": "^2.6.43",
+    "gatsby-transformer-remark": "^2.6.44",
     "gatsby-transformer-sharp": "^2.3.9",
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.5",
